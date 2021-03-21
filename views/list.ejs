@@ -1,37 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To DO List</title>
-    <link rel="stylesheet" href="css/styles.css">
-  </head>
 
-  <body>
-      <!-- Scriplet tag < %   %> allows you to write jscode, ther is no gap betn first < and %  -->
-    <!-- < % if(dayName==="Saturday" || dayName==="Sunday" ){ %>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To DO List</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="box" id="heading">
+    <!-- get the passed value in res.render by marker i.e; < %=  %>  -->
+    <h1>
+      <%= dayName %>
+    </h1>
+  </div>
+  <!-- Scriplet tag < %   %> allows you to write jscode, ther is no gap betn first < and %  -->
+  <!-- < % if(dayName==="Saturday" || dayName==="Sunday" ){ %>
     <h1 style="color: blueviolet">It's a < %= dayName %> !</h1>
     < % }else{ %>
     <h1 style="color: brown">It's a < %= dayName %> !</h1>
     < %}%> -->
 
-        <!-- get the passed value in res.render by marker i.e; < %=  %>  -->
-        <h1><%= dayName %> </h1>
-        
 
-        <ul>
-            
-            <% for(let i=0;i<newListItems.length;i++){ %>
-            <li><%= newListItems[i] %> </li>
-            <% } %>
-        </ul>
+  <div class="box">
 
-        <form action="/" method="post">
-        <input type="text" name="addedList" placeholder="Insert next list item">
-        <button type="submit" name="button">Add</button>
+    <% for(let i=0;i<newListItems.length;i++){ %>
+      <div class="item">
+        <input type="checkbox">
+        <p>
+          <%= newListItems[i] %>
+        </p>
+      </div>
+      <% } %>
+
+        <form class="item" action="/" method="post">
+          <input type="text" name="addedList" placeholder="Insert next list item" autocomplete="off">
+          <button type="submit" name="button">+</button>
         </form>
 
-    
-  </body>
+  </div>
+
+
+
+
+
+
+</body>
+
 </html>
