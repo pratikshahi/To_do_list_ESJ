@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To DO List</title>
-</head>
-<body>
-    <h1>It's a <%= dayName %>  !</h1>
-</body>
+  </head>
+
+  <body>
+      <!-- Scriplet tag < %   %> allows you to write jscode  -->
+    <% if(dayName==="Saturday" || dayName==="Sunday" ){ %>
+    <h1 style="color: blueviolet">It's a <%= dayName %> !</h1>
+    <% }else{ %>
+    <h1 style="color: brown">It's a <%= dayName %> !</h1>
+    <%}%>
+  </body>
 </html>
