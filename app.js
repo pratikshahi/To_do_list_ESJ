@@ -10,6 +10,9 @@ app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//make public as local folder to store images,sound css etc 
+app.use(express.static("public"));
+
 app.get("/", function (req, res) {
   let today = new Date();
   //took it from STackoverflow//to locale date string javascript
