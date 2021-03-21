@@ -8,11 +8,29 @@
   </head>
 
   <body>
-      <!-- Scriplet tag < %   %> allows you to write jscode  -->
-    <% if(dayName==="Saturday" || dayName==="Sunday" ){ %>
-    <h1 style="color: blueviolet">It's a <%= dayName %> !</h1>
-    <% }else{ %>
-    <h1 style="color: brown">It's a <%= dayName %> !</h1>
-    <%}%>
+      <!-- Scriplet tag < %   %> allows you to write jscode, ther is no gap betn first < and %  -->
+    <!-- < % if(dayName==="Saturday" || dayName==="Sunday" ){ %>
+    <h1 style="color: blueviolet">It's a < %= dayName %> !</h1>
+    < % }else{ %>
+    <h1 style="color: brown">It's a < %= dayName %> !</h1>
+    < %}%> -->
+
+        <!-- get the passed value in res.render by marker i.e; < %=  %>  -->
+        <h1><%= dayName %> </h1>
+        
+
+        <ul>
+            
+            <% for(var i=0;i<newListItems.length;i++){ %>
+            <li><%= newListItems[i] %> </li>
+            <% } %>
+        </ul>
+
+        <form action="/" method="post">
+        <input type="text" name="addedList" placeholder="Insert next list item">
+        <button type="submit" name="button">Add</button>
+        </form>
+
+    
   </body>
 </html>
