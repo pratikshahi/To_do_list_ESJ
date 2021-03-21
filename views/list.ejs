@@ -13,7 +13,7 @@
   <div class="box" id="heading">
     <!-- get the passed value in res.render by marker i.e; < %=  %>  -->
     <h1>
-      <%= dayName %>
+      <%= listTitle %>
     </h1>
   </div>
   <!-- Scriplet tag < %   %> allows you to write jscode, ther is no gap betn first < and %  -->
@@ -37,7 +37,7 @@
 
         <form class="item" action="/" method="post">
           <input type="text" name="addedList" placeholder="Insert next list item" autocomplete="off">
-          <button type="submit" name="button">+</button>
+          <button type="submit" name="list" value=<%=listTitle%>>+</button>
         </form>
 
   </div>
