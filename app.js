@@ -3,9 +3,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+const date = require(__dirname + "/date.js");
+
 const app = express();
 let items = ["WakeUp", "Brush your Teeth"];
-let workItems=[];
+let workItems = [];
 //telling app to use EJS
 app.set("view engine", "ejs");
 
@@ -15,18 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", function (req, res) {
-  let today = new Date();
-  //took it from STackoverflow//to locale date string javascript
-  //option is JS object
-
-  let options = {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-  };
-  //variable day gets todays date in options mentioned
-  let day = today.toLocaleDateString("en-US", options);
-
+  //require date.js allows us to use date()
+  let day = date();
   //EJS use it looks for list file inside views so, have to create views folder and list file before
   // using it //inside {} is passing object to list.ejs file
   res.render("list", { listTitle: day, newListItems: items });
@@ -41,13 +33,13 @@ app.post("/", function (req, res) {
   //items  is arry we created on top cause item could only hold 1 data and would replace the old list
 
 
-  if(req.body.list==="WorkList"){
+  if (req.body.list === "WorkList") {
 
     workItems.push(item);
     res.redirect("/work");
 
   }
-  else{
+  else {
     items.push(item);
 
     res.redirect("/");
@@ -57,15 +49,20 @@ app.post("/", function (req, res) {
 });
 
 //creating work list
-app.get("/work",function(req,res){
-  res.render("list",{listTitle:"WorkList",newListItems:workItems});
+app.get("/work", function (req, res) {
+  res.render("list", { listTitle: "WorkList", newListItems: workItems });
 });
 
-app.post("/work",function(req,res){
-  let item=req.body.addedList;
+app.post("/work", function (req, res) {
+  let item = req.body.addedList;
   workItems.push(addedList);
   res.redirect("/");
-})
+});
+
+//for detail
+app.get("/detail", function (req, res) {
+  res.render("detail");
+});
 
 app.listen(3000, function () {
   console.log("server running on port 3000");
