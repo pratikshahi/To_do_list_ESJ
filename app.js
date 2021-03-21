@@ -17,8 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", function (req, res) {
-  //require date.js allows us to use date()
-  let day = date();
+  //require date.js allows us to use date.getDay() or date.getDate()
+  let day = date.getDate();
   //EJS use it looks for list file inside views so, have to create views folder and list file before
   // using it //inside {} is passing object to list.ejs file
   res.render("list", { listTitle: day, newListItems: items });
